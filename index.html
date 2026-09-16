@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monad Origin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="cd"></div>
+<div id="cg"></div>
+<div id="noise"></div>
+
+<button id="back-btn" class="btn" onclick="goBack()">← Back</button>
+<div id="nav-right">
+  <button class="btn" onclick="goto('info')">Information</button>
+  <button class="btn" onclick="goto('contact')">Contact</button>
+</div>
+
+<!-- ══ 01 THRESHOLD ══ -->
+<section class="page active" id="page-threshold">
+  <div id="sil-layer"></div>
+  <div id="breath"></div>
+  <p id="th-tag">We translate what cannot be kept.</p>
+  <div id="th-hint">
+    <button class="btn" style="font-size:.52rem;letter-spacing:.32em;color:#2a2a26" onclick="goto('gateway')">Enter</button>
+  </div>
+</section>
+
+<!-- ══ 02 GATEWAY ══ -->
+<section class="page" id="page-gateway">
+  <div id="gw-mo" class="mono mono-f" style="font-size:.46rem;letter-spacing:.32em;">Monad Origin</div>
+  <div class="gw-wrap">
+    <svg class="gw-svg" viewBox="0 0 520 320">
+      <line x1="260" y1="22" x2="32" y2="298" stroke="#161614" stroke-width="1"/>
+      <line x1="260" y1="22" x2="488" y2="298" stroke="#161614" stroke-width="1"/>
+      <line x1="32" y1="298" x2="488" y2="298" stroke="#161614" stroke-width="1"/>
+    </svg>
+    <div class="gw-node top" onclick="goto('artefacts')">
+      <span class="gw-lbl">Artefacts</span>
+      <span class="gw-fn">Objects from sound</span>
+    </div>
+    <div class="gw-node bl" onclick="goto('process')">
+      <span class="gw-lbl">Process</span>
+      <span class="gw-fn">How translation works</span>
+    </div>
+    <div class="gw-node br" onclick="goto('votive')">
+      <span class="gw-lbl">Votive</span>
+      <span class="gw-fn">Submit a sound</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 ARTEFACTS ══ -->
+<section class="page" id="page-artefacts">
+  <div class="art-bar">
+    <span class="mono" style="font-size:.48rem;letter-spacing:.28em;">Artefacts</span>
+    <div class="fbar">
+      <button class="fb on" onclick="filt('ALL',this)">All</button>
+      <button class="fb" onclick="filt('AF',this)">AF</button>
+      <button class="fb" onclick="filt('RF',this)">RF</button>
+      <button class="fb" onclick="filt('TL',this)">TL</button>
+    </div>
+  </div>
+  <div class="art-grid" id="art-grid">
+    <div class="ac" data-tp="AF"
+      onclick="det('MO-AF-432Hz-01','Omen in A Minor','AF','Low resonance vessel. Formed from a single sustained tone.','432 Hz','Oxidised bronze, resin','2023','Placed')">
+      <div class="atx" dt="AF"></div>
+      <div class="aov">
+        <p class="acode">MO-AF-432Hz-01</p>
+        <p class="atitle">Omen in A Minor</p>
+        <p class="asub">Low resonance vessel</p>
+        <p class="astat pl">Placed</p>
+      </div>
+    </div>
+    <div class="ac" data-tp="RF"
+      onclick="det('MO-RF-528Hz-02','Residue of a Frequency','RF','Surface translation. The frequency settles into form.','528 Hz','Cast iron, ground obsidian','2023','Available')">
+      <div class="atx" dt="RF"></div>
+      <div class="aov">
+        <p class="acode">MO-RF-528Hz-02</p>
+        <p class="atitle">Residue of a Frequency</p>
+        <p class="asub">Surface translation</p>
+        <p class="astat av">Available</p>
+      </div>
+    </div>
+    <div class="ac" data-tp="TL"
+      onclick="det('MO-TL-174Hz-03','Threshold at 174','TL','A boundary held in material. Neither end nor beginning.','174 Hz','Slate, raw copper','2024','Available')">
+      <div class="atx" dt="TL"></div>
+      <div class="aov">
+        <p class="acode">MO-TL-174Hz-03</p>
+        <p class="atitle">Threshold at 174</p>
+        <p class="asub">Boundary object</p>
+        <p class="astat av">Available</p>
+      </div>
+    </div>
+    <div class="ac" data-tp="RF"
+      onclick="det('MO-RF-396Hz-04','Undoing','RF','What a frequency leaves behind when it stops.','396 Hz','Volcanic basalt','2024','Placed')">
+      <div class="atx" dt="RF"></div>
+      <div class="aov">
+        <p class="acode">MO-RF-396Hz-04</p>
+        <p class="atitle">Undoing</p>
+        <p class="asub">Residual form</p>
+        <p class="astat pl">Placed</p>
+      </div>
+    </div>
+    <div class="ac" data-tp="AF"
+      onclick="det('MO-AF-639Hz-05','Confluence','AF','Two tones, one structure. The point where they meet.','639 Hz','Bronze, river clay','2024','Available')">
+      <div class="atx" dt="AF"></div>
+      <div class="aov">
+        <p class="acode">MO-AF-639Hz-05</p>
+        <p class="atitle">Confluence</p>
+        <p class="asub">Convergence vessel</p>
+        <p class="astat av">Available</p>
+      </div>
+    </div>
+    <div class="ac" data-tp="TL"
+      onclick="det('MO-TL-852Hz-06','Passage','TL','Entry without return. The structure of a crossing.','852 Hz','Reclaimed stone, lead','2025','Available')">
+      <div class="atx" dt="TL"></div>
+      <div class="aov">
+        <p class="acode">MO-TL-852Hz-06</p>
+        <p class="atitle">Passage</p>
+        <p class="asub">Threshold element</p>
+        <p class="astat av">Available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 OBJECT PAGE ══ -->
+<section class="page" id="page-detail">
+  <div class="det">
+    <div class="det-img" id="det-img"></div>
+    <div class="det-data">
+      <p class="det-code" id="det-code"></p>
+      <p class="det-title" id="det-title"></p>
+      <p class="det-poem" id="det-poem"></p>
+      <div class="spec-list" id="det-specs"></div>
+      <div>
+        <button class="btn" id="det-req" onclick="openInq()">Request Inquiry</button>
+        <p class="det-note">No price displayed.<br>Access by dialogue only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 PROCESS ══ -->
+<section class="page" id="page-process">
+  <div class="ps">
+    <div class="pb">
+      <p class="pn">01</p>
+      <h2 class="ph">Capture</h2>
+      <p class="pd">A sound is submitted. Source and origin are recorded. Nothing else is asked.</p>
+      <p class="pmant">Sound is treated as material, not metaphor.</p>
+    </div>
+    <div class="pconn"></div>
+  </div>
+  <div class="ps">
+    <div class="pb">
+      <p class="pn">02</p>
+      <h2 class="ph">Translation</h2>
+      <p class="pd">The frequency is measured. A monad is extracted — the irreducible core.</p>
+    </div>
+    <div class="pconn"></div>
+  </div>
+  <div class="ps">
+    <div class="pb">
+      <p class="pn">03</p>
+      <h2 class="ph">Selection</h2>
+      <p class="pd">Material is assigned. The object takes form. The source is not returned.</p>
+    </div>
+  </div>
+  <div id="ph-hint">Scroll →</div>
+</section>
+
+<!-- ══ 06 VOTIVE ══ -->
+<section class="page" id="page-votive">
+
+  <!-- Code gate -->
+  <div id="vot-gate">
+    <p class="mono" style="font-size:.5rem;letter-spacing:.3em;text-align:center;">Access Code Required</p>
+    <input id="vot-code-input" type="text" autocomplete="off" spellcheck="false" placeholder="· · · ·"
+      onkeydown="if(event.key==='Enter')checkVotCode()">
+    <p id="vot-gate-err"></p>
+    <button class="btn" style="margin-top:22px;" onclick="checkVotCode()">Enter</button>
+  </div>
+
+  <!-- Form (shown after code) -->
+  <div id="vot-form">
+    <p class="vot-h">Upload the sound.</p>
+    <p class="vot-s">This source will not be returned.</p>
+    <p class="vot-w">The outcome is not guaranteed.</p>
+    <div class="rule-h"></div>
+    <div style="width:100%;margin-bottom:26px;">
+      <label class="vot-lbl">Your offering</label>
+      <textarea class="vot-ta" placeholder="Why this sound. What it carries."></textarea>
+    </div>
+    <input type="file" id="file-input" accept="audio/*" onchange="fileChosen(this)">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <button class="btn" onclick="document.getElementById('file-input').click()">Select Sound File</button>
+      <span id="vot-file-lbl"></span>
+      <button class="btn" id="vot-sub" style="display:none;" onclick="subVot()">Submit</button>
+    </div>
+  </div>
+
+  <!-- Confirm -->
+  <div id="vot-confirm">
+    <p>The source has been received.<strong>Do not attempt to access it again.</strong></p>
+    <button class="btn" onclick="goto('sealed')">Close</button>
+  </div>
+
+</section>
+
+<!-- ══ 07 INFORMATION ══ -->
+<section class="page" id="page-info">
+  <div class="info-in">
+    <div class="info-section">
+      <p class="info-label">Entity</p>
+      <p class="info-text">
+        <strong>Monad Origin</strong> is a non-disciplinary practice operating at the intersection of acoustics, material research, and object-making. Founded in 2022.
+      </p>
+    </div>
+    <div class="info-section">
+      <p class="info-label">System</p>
+      <p class="info-text">
+        Sound recordings are processed to extract dominant frequencies. Each frequency becomes the structural basis for a unique physical artefact. No two translations share a source.
+      </p>
+    </div>
+    <div class="info-section">
+      <p class="info-label">Lines</p>
+      <p class="info-text">
+        <strong>AF</strong> — Artefact. Autonomous objects. Editions of one.<br>
+        <strong>RF</strong> — Resonant Furniture. Functional-sculptural works.<br>
+        <strong>TL</strong> — Talisman. Small-scale frequency objects.
+      </p>
+    </div>
+    <div class="info-section">
+      <p class="info-label">Access</p>
+      <p class="info-text">
+        Works are available to collectors, institutions, and galleries by direct dialogue. No public pricing. No open editions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 CONTACT ══ -->
+<section class="page" id="page-contact">
+  <div class="ct-in">
+    <p class="ct-line">Direct Contact</p>
+    <a class="ct-email" href="mailto:studio@monadorigin.com">studio@monadorigin.com</a>
+    <div class="rule-h"></div>
+    <p class="ct-note">We respond selectively.<br>No forms. No automated replies.</p>
+  </div>
+</section>
+
+<!-- ══ SEALED ══ -->
+<section class="page" id="page-sealed">
+  <p>The portal is closed.</p>
+</section>
+
+<!-- ══ INQUIRY MODAL ══ -->
+<div id="inq" onclick="closeInqOut(event)">
+  <div class="inq-box">
+    <p class="mono" style="font-size:.46rem;letter-spacing:.28em;text-align:center;">Inquiry</p>
+    <div id="inq-form">
+      <div class="inq-f"><label>Name</label><input type="text" placeholder="—"></div>
+      <div class="inq-f" style="margin-top:16px;"><label>Contact</label><input type="email" placeholder="—"></div>
+      <div style="display:flex;gap:24px;margin-top:26px;justify-content:center;">
+        <button class="btn btn-ghost" onclick="closeInq()">Cancel</button>
+        <button class="btn" onclick="sendInq()">Send</button>
+      </div>
+    </div>
+    <div id="inq-sent"><p>Received.</p></div>
+  </div>
+</div>
+
+<script>
+// ── CURSOR ──
+const cd=document.getElementById('cd'),cg=document.getElementById('cg');
+let mx=-200,my=-200,gx=-200,gy=-200;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){gx+=(mx-gx)*.07;gy+=(my-gy)*.07;cd.style.cssText=`left:${mx}px;top:${my}px`;cg.style.cssText=`left:${gx}px;top:${gy}px`;requestAnimationFrame(loop)})();
+
+// ── SILHOUETTES ──
+(function(){
+  const layer=document.getElementById('sil-layer');
+  const shapes=[
+    {w:60,h:120,t:18,l:22},{w:80,h:40,t:58,l:62},{w:30,h:90,t:28,l:74},
+    {w:50,h:70,t:65,l:38},{w:90,h:20,t:42,l:8},{w:40,h:100,t:10,l:85}
+  ];
+  shapes.forEach((s,i)=>{
+    const d=document.createElement('div');
+    const dur=7+Math.random()*14;
+    const delay=Math.random()*20;
+    d.style.cssText=`position:absolute;width:${s.w}px;height:${s.h}px;top:${s.t}%;left:${s.l}%;background:rgba(234,234,234,.018);border-radius:1px;opacity:0;animation:silFlicker ${dur}s ${delay}s infinite`;
+    layer.appendChild(d);
+  });
+})();
+
+// ── ROUTING ──
+let stack=['threshold'];
+const bb=document.getElementById('back-btn'),nr=document.getElementById('nav-right');
+const noB=['threshold','sealed'];
+const noNR=['threshold','sealed','info','contact'];
+function goto(n){
+  const c=stack[stack.length-1];if(c===n)return;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+n).classList.add('active');
+  stack.push(n);
+  bb.classList.toggle('v',!noB.includes(n));
+  nr.classList.toggle('v',!noNR.includes(n));
+}
+function goBack(){
+  if(stack.length<=1)return;
+  stack.pop();
+  const p=stack[stack.length-1];
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  bb.classList.toggle('v',!noB.includes(p));
+  nr.classList.toggle('v',!noNR.includes(p));
+}
+
+// Threshold: click anywhere
+document.getElementById('page-threshold').addEventListener('click',()=>{
+  if(parseFloat(getComputedStyle(document.getElementById('th-hint')).opacity)>.05)goto('gateway');
+});
+
+// ── FILTER ──
+function filt(t,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.ac').forEach(c=>{c.style.display=(t==='ALL'||c.dataset.tp===t)?'':'none'});
+}
+
+// ── DETAIL ──
+function det(code,title,type,poem,freq,mat,yr,status){
+  document.getElementById('det-code').textContent=code;
+  document.getElementById('det-title').textContent=title;
+  document.getElementById('det-poem').textContent=poem;
+  document.getElementById('det-img').innerHTML=`<div class="atx" dt="${type}" style="width:100%;height:100%"></div>`;
+  const sc=status==='Available'?'#686858':'#2c2c2a';
+  document.getElementById('det-specs').innerHTML=`
+    <div class="spec-r"><span class="spec-l">Frequency</span><span class="spec-v">${freq}</span></div>
+    <div class="spec-r"><span class="spec-l">Material</span><span class="spec-v">${mat}</span></div>
+    <div class="spec-r"><span class="spec-l">Year</span><span class="spec-v">${yr}</span></div>
+    <div class="spec-r"><span class="spec-l">Status</span><span class="spec-v" style="color:${sc};font-family:var(--mono);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;font-style:normal">${status}</span></div>`;
+  document.getElementById('det-req').style.display=status==='Available'?'':'none';
+  goto('detail');
+}
+
+// ── PROCESS SCROLL ──
+const pp=document.getElementById('page-process'),pph=document.getElementById('ph-hint');
+pp.addEventListener('scroll',()=>pph.classList.toggle('gone',pp.scrollLeft>40));
+document.addEventListener('keydown',e=>{
+  if(stack[stack.length-1]!=='process')return;
+  if(e.key==='ArrowRight')pp.scrollBy({left:200,behavior:'smooth'});
+  if(e.key==='ArrowLeft')pp.scrollBy({left:-200,behavior:'smooth'});
+});
+
+// ── VOTIVE CODE ──
+const VOT_CODE='VOTIVE';
+function checkVotCode(){
+  const v=document.getElementById('vot-code-input').value.trim().toUpperCase();
+  if(v===VOT_CODE){
+    document.getElementById('vot-gate').style.display='none';
+    document.getElementById('vot-form').style.display='flex';
+  } else {
+    document.getElementById('vot-gate-err').textContent='Invalid.';
+    document.getElementById('vot-code-input').value='';
+  }
+}
+function fileChosen(i){if(i.files[0]){document.getElementById('vot-file-lbl').textContent=i.files[0].name;document.getElementById('vot-sub').style.display='inline-block'}}
+function subVot(){document.getElementById('vot-form').style.display='none';const c=document.getElementById('vot-confirm');c.style.display='flex';}
+
+// ── INQUIRY ──
+function openInq(){document.getElementById('inq').classList.add('o')}
+function closeInq(){
+  document.getElementById('inq').classList.remove('o');
+  setTimeout(()=>{document.getElementById('inq-form').style.display='';document.getElementById('inq-sent').style.display='none'},600);
+}
+function closeInqOut(e){if(e.target===document.getElementById('inq'))closeInq()}
+function sendInq(){document.getElementById('inq-form').style.display='none';document.getElementById('inq-sent').style.display='block';setTimeout(closeInq,2200)}
+</script>
+</body>
+</html>
